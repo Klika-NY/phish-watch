@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" role="img" aria-label="Autobot">
+  <rect width="200" height="180" fill="#000"/>
+  <path fill="#8aa0c0" d="M18 54 L52 18 L148 18 L182 54 L168 162 L100 176 L32 162 Z"/>
+  <path fill="#2a6ad6" d="M52 20 L100 20 L100 70 L72 54 Z"/>
+  <path fill="#cfd8e6" d="M148 20 L100 20 L100 70 L128 54 Z"/>
+  <path fill="#111" d="M70 34 L92 50 L100 34 L108 50 L130 34 L118 62 L100 52 L82 62 Z"/>
+  <path fill="#c45a1a" d="M40 78 L78 70 L78 118 L48 128 Z"/>
+  <path fill="#e07a28" d="M160 78 L122 70 L122 118 L152 128 Z"/>
+  <path fill="#111" d="M86 68 L114 68 L108 128 L92 128 Z"/>
+  <path fill="#d8dee8" d="M78 128 L100 168 L122 128 L108 122 L100 148 L92 122 Z"/>
+  <path fill="#9aa8bc" d="M32 150 L100 168 L168 150 L158 160 L100 174 L42 160 Z"/>
+</svg>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05060a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Phish Watch" />
+  <title>Autobot · Phish Watch</title>
+  <link rel="icon" href="logo.svg" />
+  <link rel="apple-touch-icon" href="logo.svg" />
+  <style>
+    :root { --bg:#05060a; --panel:#10131c; --panel-2:#171b27; --line:#2a3144; --text:#eef2ff; --muted:#9aa6c2; --green:#22e36a; --red:#ff3b3b; --yellow:#ffd24a; --blue:#4da3ff; }
+    * { box-sizing:border-box; } html,body{margin:0;padding:0;}
+    body{min-height:100dvh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:radial-gradient(1200px 500px at 50% -80px,rgba(77,163,255,.18),transparent 60%),var(--bg);color:var(--text);padding:calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));}
+    .wrap{width:min(760px,100%);margin:0 auto;}
+    header{text-align:center;margin-bottom:22px;}
+    .logo-ring{width:min(220px,58vw);height:min(220px,58vw);margin:0 auto 14px;border-radius:28px;padding:10px;background:linear-gradient(180deg,#1a2233,#0b0e16);border:1px solid #3a4664;box-shadow:0 20px 50px rgba(0,0,0,.45);}
+    .logo-ring img{width:100%;height:100%;object-fit:contain;border-radius:18px;background:#000;display:block;}
+    .kicker{letter-spacing:.22em;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;margin:0 0 6px;}
+    h1{margin:0;font-size:clamp(26px,7vw,40px);line-height:1.05;letter-spacing:-.03em;}
+    .sub{margin:8px 0 0;color:var(--muted);font-size:14px;}
+    .status{border-radius:18px;padding:18px 16px;margin:16px 0;border:1px solid var(--line);background:var(--panel);}
+    .status.none{background:rgba(255,59,59,.14);border-color:rgba(255,59,59,.45);}
+    .status.drop{background:rgba(34,227,106,.14);border-color:rgba(34,227,106,.5);}
+    .status.rumor{background:rgba(255,210,74,.14);border-color:rgba(255,210,74,.45);}
+    .status .label{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+    .status.none .label,.status.none h2{color:var(--red);}
+    .status.drop .label,.status.drop h2{color:var(--green);}
+    .status.rumor .label,.status.rumor h2{color:var(--yellow);}
+    .status h2{margin:0;font-size:clamp(28px,8vw,42px);line-height:1.05;}
+    .status p{margin:8px 0 0;color:var(--muted);font-size:14px;}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;}
+    .card h3{margin:0 0 12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+    .date-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #23283a;font-size:15px;}
+    .date-row:first-of-type{border-top:0;padding-top:0;}
+    .date-row .when{font-weight:700;white-space:nowrap;}
+    .date-row .where{color:var(--muted);text-align:right;}
+    .links{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    a.btn{display:block;text-decoration:none;color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:12px 10px;font-size:13px;font-weight:650;text-align:center;}
+    footer{margin-top:20px;color:#6f7a94;font-size:12px;line-height:1.5;text-align:center;}
+    footer a{color:#9ecbff;}
+    @media (max-width:420px){.links{grid-template-columns:1fr;}.date-row{flex-direction:column;gap:2px;}.date-row .where{text-align:left;}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo-ring"><img src="logo.svg" alt="Autobot logo" /></div>
+      <p class="kicker">Autobot · Phish Watch</p>
+      <h1>Concert Alert Page</h1>
+      <p class="sub">Hourly monitor for official Phish dates and separate rumor traffic. Bookmark this page or add it to your Home Screen.</p>
+    </header>
+    <section class="status none" id="official-status">
+      <div class="label">Official status</div>
+      <h2>Nothing Yet</h2>
+      <p>No new official Phish concert dates beyond the already-announced 2026 slate as of Sep 1, 2026, 7:11 PM ET.</p>
+    </section>
+    <section class="status rumor" id="rumor-status">
+      <div class="label">Rumor desk</div>
+      <h2 style="font-size:28px;">No concrete rumor dates this build</h2>
+      <p>Unconfirmed date + venue claims from @PhishRumors, @PhishatMSG, @wookplus, or Phantasy Tour appear here in yellow.</p>
+    </section>
+    <section class="card">
+      <h3>Already announced — not a new drop</h3>
+      <div class="date-row"><span class="when">Sep 4–6, 2026</span><span class="where">Dick’s Sporting Goods Park, Commerce City, CO</span></div>
+      <div class="date-row"><span class="when">Oct 2–4, 2026</span><span class="where">Boardwalk Hall, Atlantic City, NJ</span></div>
+      <div class="date-row"><span class="when">Oct 6–7, 2026</span><span class="where">Allianz Amphitheater, Richmond, VA</span></div>
+      <div class="date-row"><span class="when">Oct 9, 2026</span><span class="where">VyStar Veterans Memorial Arena, Jacksonville, FL</span></div>
+      <div class="date-row"><span class="when">Oct 10–11, 2026</span><span class="where">The Orion Amphitheater, Huntsville, AL</span></div>
+      <div class="date-row"><span class="when">2027</span><span class="where">Phish: Riviera Maya destination event</span></div>
+    </section>
+    <section class="card">
+      <h3>Official sources</h3>
+      <div class="links">
+        <a class="btn" href="https://phish.com/tours/">phish.com/tours</a>
+        <a class="btn" href="https://phish.com/news/">phish.com/news</a>
+        <a class="btn" href="https://tickets.phish.com/">tickets.phish.com</a>
+        <a class="btn" href="https://x.com/phish">X @phish</a>
+        <a class="btn" href="https://x.com/Phish_FTR">X @Phish_FTR</a>
+        <a class="btn" href="https://www.instagram.com/phish/">Instagram @phish</a>
+        <a class="btn" href="https://bsky.app/profile/phish.com">Bluesky</a>
+        <a class="btn" href="https://www.threads.com/@phish">Threads</a>
+        <a class="btn" href="https://x.com/TheGarden">X @TheGarden</a>
+        <a class="btn" href="https://www.reddit.com/r/phish/new/">r/phish</a>
+        <a class="btn" href="https://www.ticketmaster.com/phish-tickets/artist/735887">Ticketmaster</a>
+        <a class="btn" href="https://www.phantasytour.com/bands/phish">Phantasy Tour</a>
+      </div>
+    </section>
+    <section class="card">
+      <h3>How the hourly push works</h3>
+      <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.55;">
+        Every hour Grok sends a lock-screen banner starting with <strong>🤖 AUTOBOT · PHISH WATCH</strong>, then green “NEW PHISH DATES DROPPED”, red “Nothing Yet”, or yellow rumors.
+        Tapping the iOS banner opens the Grok app to that run. Every run also includes this live dashboard URL so you can open the branded page in one tap from the result.
+      </p>
+    </section>
+    <footer>
+      Live page: <a href="https://klika-ny.github.io/phish-watch/">https://klika-ny.github.io/phish-watch/</a><br />
+      Hourly Phish Concert Watch · America/New_York · app push
+    </footer>
+  </div>
+</body>
+</html>

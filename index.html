@@ -14,7 +14,7 @@
     .wrap{width:min(760px,100%);margin:0 auto;}
     header{text-align:center;margin-bottom:22px;}
     .hero{width:100%;border-radius:22px;overflow:hidden;border:1px solid #3a4664;box-shadow:0 20px 50px rgba(0,0,0,.45);margin:0 auto 16px;background:#000;min-height:180px;}
-    .hero img{width:100%;height:min(52vw,380px);object-fit:cover;object-position:center 38%;display:block;}
+    .hero img{width:100%;height:min(52vw,380px);object-fit:cover;object-position:center 40%;display:block;background:#000;}
     .kicker{letter-spacing:.22em;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;margin:0 0 6px;}
     h1{margin:0;font-size:clamp(26px,7vw,40px);line-height:1.05;letter-spacing:-.03em;}
     .sub{margin:8px 0 0;color:var(--muted);font-size:14px;}
@@ -42,7 +42,7 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="hero"><img id="hero-photo" alt="Phish at Madison Square Garden" /></div>
+      <div class="hero"><img src="hero.jpg" alt="Phish at Madison Square Garden" /></div>
       <p class="kicker">Autobot · Phish Watch</p>
       <h1>Concert Alert Page</h1>
       <p class="sub">Hourly monitor for official Phish dates and separate rumor traffic.</p>
@@ -88,12 +88,5 @@
       Hourly Phish Concert Watch · America/New_York · app push
     </footer>
   </div>
-  <script>
-    Promise.all(['hero.0.b64','hero.1.b64','hero.2.b64','hero.3.b64'].map(function(p){
-      return fetch(p).then(function(r){ if(!r.ok) throw r.status; return r.text(); });
-    })).then(function(parts){
-      document.getElementById('hero-photo').src = 'data:image/jpeg;base64,' + parts.join('').replace(/\s/g,'');
-    }).catch(function(e){ console.error(e); });
-  </script>
 </body>
 </html>

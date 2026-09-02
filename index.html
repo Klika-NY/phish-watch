@@ -114,7 +114,7 @@
   <div class="wrap">
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme">Light</button>
     <header>
-      <div class="hero"><img id="hero-photo" alt="Phish at Madison Square Garden — circular rainbow ceiling view" /></div>
+      <div class="hero"><img id="hero-photo" src="IMG_5981.jpeg" alt="Phish at Madison Square Garden" /></div>
       <p class="kicker">Autobot · Phish Watch</p>
       <h1>Concert Alert Page</h1>
       <p class="sub">Hourly monitor for official Phish dates and separate rumor traffic.</p>
@@ -161,12 +161,6 @@
     </footer>
   </div>
   <script>
-    function setHero(t){ document.getElementById('hero-photo').src = 'data:image/jpeg;base64,' + String(t).replace(/\s/g,''); }
-    fetch('hero.b64?v=circ1').then(function(r){ if(!r.ok) throw r.status; return r.text(); }).then(setHero).catch(function(){
-      Promise.all(['hero.0.b64','hero.1.b64','hero.2.b64'].map(function(p){ return fetch(p+'?v=circ2').then(function(r){ if(!r.ok) throw r.status; return r.text(); }); }))
-        .then(function(parts){ setHero(parts.join('')); });
-    });
-
     function currentTheme(){ return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
     function applyTheme(theme){
       document.documentElement.setAttribute('data-theme', theme);

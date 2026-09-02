@@ -88,11 +88,15 @@
     </footer>
   </div>
   <script>
-    Promise.all(['hero.0.b64','hero.1.b64','hero.2.b64','hero.3.b64'].map(function(p){
+    Promise.all(['hero.0.b64','hero.1.b64'].map(function(p){
       return fetch(p).then(function(r){ if(!r.ok) throw r.status; return r.text(); });
     })).then(function(parts){
       document.getElementById('hero-photo').src = 'data:image/jpeg;base64,' + parts.join('').replace(/\s/g,'');
-    }).catch(function(e){ console.error(e); });
+    }).catch(function(){
+      fetch('hero.b64').then(function(r){ return r.text(); }).then(function(t){
+        document.getElementById('hero-photo').src = 'data:image/jpeg;base64,' + t.replace(/\s/g,'');
+      });
+    });
   </script>
 </body>
 </html>

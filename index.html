@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05060a" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Autobot · Phish Watch</title>
   <link rel="icon" href="logo.svg" />
   <style>
-    :root { --bg:#05060a; --panel:#10131c; --panel-2:#171b27; --line:#2a3144; --text:#eef2ff; --muted:#9aa6c2; --green:#22e36a; --red:#ff3b3b; --yellow:#ffd24a; --blue:#4da3ff; }
+    :root { --bg:#05060a; --panel:#10131c; --panel-2:#171b27; --line:#2a3144; --text:#eef2ff; --muted:#9aa6c2; --red:#ff3b3b; --yellow:#ffd24a; --blue:#4da3ff; }
     * { box-sizing:border-box; } html,body{margin:0;padding:0;}
     body{min-height:100dvh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:radial-gradient(1200px 500px at 50% -80px,rgba(77,163,255,.18),transparent 60%),var(--bg);color:var(--text);padding:calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));}
     .wrap{width:min(760px,100%);margin:0 auto;}
@@ -36,16 +35,15 @@
     a.btn{display:block;text-decoration:none;color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:12px 10px;font-size:13px;font-weight:650;text-align:center;}
     footer{margin-top:20px;color:#6f7a94;font-size:12px;line-height:1.5;text-align:center;}
     footer a{color:#9ecbff;}
-    @media (max-width:420px){.links{grid-template-columns:1fr;}.date-row{flex-direction:column;gap:2px;}.date-row .where{text-align:left;}.hero img{height:58vw;}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="hero"><img id="hero-photo" alt="Phish at Madison Square Garden — rainbow lights under the Chase centerhung" /></div>
+      <div class="hero"><img id="hero-photo" alt="Phish at Madison Square Garden" /></div>
       <p class="kicker">Autobot · Phish Watch</p>
       <h1>Concert Alert Page</h1>
-      <p class="sub">Hourly monitor for official Phish dates and separate rumor traffic. Bookmark this page or add it to your Home Screen.</p>
+      <p class="sub">Hourly monitor for official Phish dates and separate rumor traffic.</p>
     </header>
     <section class="status none">
       <div class="label">Official status</div>
@@ -90,7 +88,9 @@
   </div>
   <script>
     fetch('hero.b64').then(function(r){return r.text();}).then(function(t){
-      document.getElementById('hero-photo').src = 'data:image/jpeg;base64,' + t.replace(/\s/g,'');
+      if(t && t.indexOf('PLACEHOLDER')===-1){
+        document.getElementById('hero-photo').src='data:image/jpeg;base64,'+t.replace(/\s/g,'');
+      }
     }).catch(function(){});
   </script>
 </body>

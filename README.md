@@ -4,6 +4,8 @@ Landing page for the hourly Grok Phish concert monitor.
 
 **Live URL after Pages is enabled:** https://klika-ny.github.io/phish-watch/
 
+Official Grok Bot profile (name, job, description, skills, routines): [GROK-BOT.md](GROK-BOT.md)
+
 ## Deploy (one click you have to do)
 
 The site files are already on `main`. GitHub Actions cannot publish until Pages is enabled on this repo.

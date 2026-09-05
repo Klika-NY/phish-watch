@@ -1,0 +1,53 @@
+name: ntfy on Phish Watch change
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - last-sweep.json
+  workflow_dispatch:
+    inputs:
+      message:
+        description: Optional test body
+        required: false
+        default: Autobot ntfy test from GitHub Actions
+
+jobs:
+  ntfy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Publish to ntfy
+        env:
+          NTFY_TOPIC: Phish-Watch
+          INPUT_MSG: ${{ github.event.inputs.message }}
+        run: |
+          set -euo pipefail
+          TITLE="Phish Watch · GitHub"
+          PRIO="default"
+          TAGS="guitar"
+          BODY="${INPUT_MSG:-}"
+          if [ -z "$BODY" ]; then
+            BODY=$(git log -1 --pretty=%s)
+            FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || true)
+            BODY=$(printf '%s\n%s\n%s' "$BODY" "$FILES" "https://klika-ny.github.io/phish-watch/")
+          fi
+          if echo "$BODY" | grep -qiE 'NEW PHISH|DATES DROPPED|SITE CHANGE'; then
+            PRIO=urgent
+            TAGS="rotating_light,guitar"
+            TITLE="Phish Watch · NEW DATES"
+          elif echo "$BODY" | grep -qiE 'rumor'; then
+            PRIO=high
+            TAGS="warning,guitar"
+            TITLE="Phish Watch · rumor"
+          fi
+          curl -fsS \
+            -H "Title: $TITLE" \
+            -H "Priority: $PRIO" \
+            -H "Tags: $TAGS" \
+            -H "Click: https://klika-ny.github.io/phish-watch/" \
+            -d "$BODY" \
+            "https://ntfy.sh/${NTFY_TOPIC}"

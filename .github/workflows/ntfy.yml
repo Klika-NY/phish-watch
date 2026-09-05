@@ -36,11 +36,11 @@ jobs:
             BODY=$(printf '%s\n%s\n%s' "$BODY" "$FILES" "https://klika-ny.github.io/phish-watch/")
           fi
           if echo "$BODY" | grep -qiE 'NEW PHISH|DATES DROPPED|SITE CHANGE'; then
-            PRIO=urgent
-            TAGS="rotating_light,guitar"
+            PRIO=high
+            TAGS="guitar"
             TITLE="Phish Watch · NEW DATES"
           elif echo "$BODY" | grep -qiE 'rumor'; then
-            PRIO=high
+            PRIO=default
             TAGS="warning,guitar"
             TITLE="Phish Watch · rumor"
           fi
